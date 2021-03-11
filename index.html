@@ -13,38 +13,47 @@
     
 
 <body>
-    
-    <table align="center">
-      <tbody>
-        <tr>
-          <td colspan="8"><h1>Memory Game</h1></td>
-        </tr>
-        
-        <tr>
-          <td>Name</td>
-          <td><span id="name"></span></td>
-          <td>Score</td>
-          <td><span id="score"></span></td>
-          <td>Level</td>
-          <td><span id="level"></span></td>            
-          <td id="Time">Time</td>
-          <td>
-            <span id="minutes"></span>:<span id="seconds"></span>
-          </td>
-          </tr>
-          <tr>
-            <td colspan="8">&nbsp;</td>
-          </tr>
-          <tr>
-            <td colspan="8" width="100%"><div id="game"></div></td>
-          </tr>
-          <tr>
-            <td colspan="8">&nbsp;</td>
-          </tr>
-          <tr>
-            <td colspan="8"><p id="complete"></p></td>
-          </tr>
+  <div class="main">
+    <h1>Memory Game</h1>
+  <img src="img/group.jpg"></br></br>
+  Name:<input type="text" id="nameinput" required></br></br>
+  <button><class id="start">Start Game</button>
+</br></br>
+  <details>
+    <summary>How to play</summary>
+    <p>Click on 2 cards.</p>
+    <p>If the cards match, they will remain up. Otherwise, try again.</p>
+    <p>If you match all the cards, you can go on to the next level.</p>
+  </details>
+  </div>
+
+  <table id="table">
+    <tbody>
+      <tr>
+      <td colspan="4"><h2 class="title">Memory Game</h2></td>
+      </tr>
+      <tr>
+      <td>Name:   <span id="name"></span></td>
+      <td>Score:  <span id="score"></span></td>
+      <td>Level:  <span id="level"></span></td>
+      <td>Time:   <span id="minutes"></span>:<span id="seconds"></span></td>
+      </tr>
+      <tr>
+      <td colspan="4">&nbsp;</td>
+      </tr>
+      <tr>
+      <td colspan="4" width="100%"><div id="game"></div></td>
+      </tr>
+      <!-- <tr>
+      <td colspan="4">&nbsp;</td>
+      </tr> -->
+      <tr>
+      <td colspan="4"><h3 id="complete"></h3></td>
+      </tr>
       </tbody>
     </table>
+    <button class="next">Next Level</button>
+    <h4 class="congrats"></h4>
+    <button class="playagain">Play Again</button>
 </body>
 </html>
