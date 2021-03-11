@@ -66,6 +66,7 @@ $(()=> {
     let numOfCards = 2;
     let returnUnDuplicatedArray =[];
     let duplicateCurrArray=[];
+
     
     //Shuffle cards from card array
     const selectNumOfImgs = (cardArray, num) => {
@@ -93,8 +94,8 @@ $(()=> {
       duplicateCurrArray = getPairs(returnUnDuplicatedArray);
       
 
-      //To display current level
       // $("#nameinput").text("");
+      //To display current level
       $("#level").text(level);
       
 
@@ -123,12 +124,22 @@ $(()=> {
       })
       ).appendTo("section");
       })
-  
+
+
       $(".card").on("click", (event)=>{
         $(event.currentTarget).toggleClass("selected");
-  
 
-        // If two cards selected
+        //Set audio when flip card 
+        let sound = new Audio("audio/flip-effect.mp3"); {
+          $(".card").on("click", new Audio);
+          sound.play();
+        }
+
+        //Set audio when level complete
+        let levelUp = new Audio("audio/nextlevel-effect.mp3") 
+
+
+       // If two cards selected
         if ($(".selected").length === 2) {
             if ($(".selected").first().attr("dataname") === 
             $(".selected").last().attr("dataname")) {
@@ -142,11 +153,15 @@ $(()=> {
                 $(".selected").first().removeClass("selected");
                 $(".selected").last().removeClass("selected");
                 
-                //Append score whenever two card matches
+                //Score +100 whenever two card matches
                 $("#score").text(score+=100);
   
             } else{
-                 console.log("not match");
+                //  console.log("not match");
+                //Cards to auto flip back if not match 
+                setTimeout(() => {
+                  $(".selected").removeClass("selected");
+                }, 800);
             }
         //If 1 card selected, do nothing
         } else if ($(".selected").length <2) {
@@ -158,16 +173,17 @@ $(()=> {
               return $(this).attr('data-iscardmatch') == "notmatch"
             });
               notMatching.removeClass("selected");
-        }
-      
+          }
 
         //If all cards matches 
       if (duplicateCurrArray.length === $(".match").length) {
+        levelUp.play();
         $("#complete").text("Congrats for clearing the level!");
         $(".next").show();
 
+
           //When game complete 
-          if ( level === 5) {
+          if ( level === 6) {
             $("#complete").hide();
             $(".next").hide();
             // Display message with score and time taken to complete game after 1 secs 
@@ -192,7 +208,7 @@ $(()=> {
       }
     
 
-      $(".next").on('click',() => {
+      $(".next").on("click",() => {
         $(".next").hide();
           $("section").remove();
           // Empty text at every level
@@ -203,7 +219,7 @@ $(()=> {
           level += 1;
           loadGameSection();
      });
-    
+
 
     const resetDefault = () => {
             $("section").remove();
@@ -256,5 +272,3 @@ $(()=> {
       $("#minutes").html(time(parseInt(sec/60,10)));
     }, 1000);
   })
-  
-  
